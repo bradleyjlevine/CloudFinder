@@ -19,7 +19,7 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--pull",
-    choices = ["all","none","gcp","aws","azure","oci","linode","digital ocean","cloudflare","flastly"],
+    choices = ["all","none","gcp","aws","azure","oci","linode","digital ocean","cloudflare","flastly","github"],
     dest = "update",
     action= "store",
     default = "all",
@@ -227,6 +227,31 @@ def get_linode():
                                             "service": None,
                                             "type": None}
                                     })
+                        
+def get_github():
+    urls = {"github": "https://api.github.com/meta"}
+    
+    for url in urls.keys():
+        with requests.Session() as session:
+            j = session.get(
+                url = urls[url]
+            )
+
+            if 200 >= j.status_code < 300:
+                j = json.loads(j.text)
+
+            if url == "github" and "hooks" in j.keys():
+                clouds.update({url:defaultdict()})
+
+                for service in j.keys():
+                    if "ssh_keys" not in service and "ssh_key_fingerprints" not in service and "verifiable_password_authentication" not in service and "domains" not in service:
+                        for ip in j[service]:
+                            clouds[url].update({ip:{
+                                                "description": "IP Address Used by Github",
+                                                "region": None,
+                                                "service": service,
+                                                "type": None}
+                                        })   
 
 def lookup_ip(ip):
     for cloud in clouds.keys():
@@ -303,6 +328,13 @@ if __name__ == "__main__":
         if "linode" in clouds.keys():
             with open(os.path.join(CWD,"Clouds","linode.json"), "w") as file:
                 json.dump(clouds["linode"], file)
+
+    if args.update == "all" or args.update == "github":
+        get_github()
+
+        if "github" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","github.json"), "w") as file:
+                json.dump(clouds["github"], file)
 
     print(args.ip)
     lookup_ip(args.ip)
