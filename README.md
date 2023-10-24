@@ -9,3 +9,4 @@ Services so far:
 * Fastly
 * OCI
 * Linode
+* GitHub
