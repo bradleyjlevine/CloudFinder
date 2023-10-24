@@ -171,6 +171,62 @@ def get_fastly():
                                         "service": None,
                                         "type": 6}
                                 }) 
+                    
+def get_oci():
+    urls = {"oci": "https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges.json"}
+
+    for url in urls.keys():
+        with requests.Session() as session:
+            j = session.get(
+                url=urls[url]
+            )
+
+            if 200 >= j.status_code < 300:
+                j = json.loads(j.text)
+
+            if url =="oci" and "regions" in j.keys():
+                clouds.update({url:defaultdict()})
+
+                for n in range(len(j["regions"])):
+                    if "region" in j["regions"][n].keys() and "cidrs" in j["regions"][n].keys():
+                        for m in range(len(j["regions"][n]["cidrs"])):
+                            clouds[url].update({j["regions"][n]["cidrs"][m]["cidr"]:{
+                                    "description": "IP Address Used by Oracle for OCI or other services.",
+                                    "region": j["regions"][n]["region"],
+                                    "service": j["regions"][n]["cidrs"][m]["tags"],
+                                    "type": None}
+                            }) 
+                    
+def get_linode():
+    urls = {"linode": "https://geoip.linode.com/"}
+
+    for url in urls.keys():
+            with requests.Session() as session:
+                t = session.get(
+                    url = urls[url]
+                )
+
+                if 200 >= t.status_code < 300:
+                    t = t.text
+
+                if url == "linode":
+                    clouds.update({url:defaultdict()})
+
+                lines = t.split("\n")
+                lines = lines[3:]
+
+                for line in lines:
+                    line = line.strip()
+
+                    if len(line)>4:
+                        cols = line.split(",")
+                        
+                        clouds[url].update({cols[0]:{
+                                            "description": "IP Address Used by Linode",
+                                            "region": ",".join(cols[2:4]),
+                                            "service": None,
+                                            "type": None}
+                                    })
 
 def lookup_ip(ip):
     for cloud in clouds.keys():
@@ -227,12 +283,26 @@ if __name__ == "__main__":
             with open(os.path.join(CWD,"Clouds","cloudflare-v6.json"), "w") as file:
                 json.dump(clouds["cloudflare-v6"], file)
 
-    if args.update == "all" or argsg.update == "fastly":
+    if args.update == "all" or args.update == "fastly":
         get_fastly()
 
         if "fastly" in clouds.keys():
             with open(os.path.join(CWD,"Clouds","fastly.json"), "w") as file:
                 json.dump(clouds["fastly"], file)
+
+    if args.update == "all" or args.update == "oci":
+        get_oci()
+
+        if "oci" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","oci.json"), "w") as file:
+                json.dump(clouds["oci"], file)
+
+    if args.update == "all" or args.update == "linode":
+        get_linode()
+
+        if "linode" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","linode.json"), "w") as file:
+                json.dump(clouds["linode"], file)
 
     print(args.ip)
     lookup_ip(args.ip)
