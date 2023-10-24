@@ -10,3 +10,5 @@ Services so far:
 * OCI
 * Linode
 * GitHub
+* DigitalOcean
+* Akamai

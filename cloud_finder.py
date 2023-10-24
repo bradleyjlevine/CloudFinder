@@ -2,11 +2,13 @@ import argparse
 import json
 import requests
 import os
+from io import BytesIO
 from collections import defaultdict
+from zipfile import ZipFile
 import ipaddress
 import sys
 
-sys.tracebacklimit=0
+sys.tracebacklimit=1
 
 # Get command-line options
 parser=argparse.ArgumentParser(description="CloudFinder, for finding IPs in the Clouds.  CloudFinder 2023.")
@@ -19,7 +21,7 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--pull",
-    choices = ["all","none","gcp","aws","azure","oci","linode","digital ocean","cloudflare","flastly","github"],
+    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai"],
     dest = "update",
     action= "store",
     default = "all",
@@ -253,6 +255,65 @@ def get_github():
                                                 "type": None}
                                         })   
 
+def get_digital_ocean():
+    urls = {"digital_ocean": "https://digitalocean.com/geo/google.csv"}
+    
+    for url in urls.keys():
+        with requests.Session() as session:
+            t = session.get(
+                url = urls[url],
+                allow_redirects = True
+            )
+
+            if 200 >= t.status_code < 300:
+                t = t.text
+
+            lines = t.split("\n")
+
+            clouds.update({url:defaultdict()})
+
+            for line in lines:
+                line = line.strip()
+                cols = line.split(",")
+
+                if len(line)>4:
+                    clouds[url].update({cols[0]:{
+                            "description": "IP Address Used by DigitalOcean",
+                            "region": ",".join(cols[2:4]),
+                            "service": None,
+                            "type": None}
+                    })   
+
+def get_akamai():
+    urls = {"akamai": "https://techdocs.akamai.com/property-manager/pdfs/akamai_ipv4_ipv6_CIDRs-txt.zip"}
+
+    for url in urls.keys():
+            with requests.Session() as session:
+                z = session.get(
+                    url = urls[url],
+                    allow_redirects = True,
+                    timeout=60,
+                    headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0"}
+                )
+
+                print(z.status_code)
+
+                if 200 >= z.status_code < 300:
+                    clouds.update({url:defaultdict()})
+                    with ZipFile(BytesIO(z.content)) as zipfile:
+                        print(zipfile.namelist())
+                        for file in zipfile.namelist():
+                            if file == "akamai_ipv4_CIDRs.txt" or file == "akamai_ipv6_CIDRs.txt":
+                                for line in zipfile.open(file).readlines():
+                                    line=line.decode("utf-8").strip()
+                                    if len(line)>4:
+                                        clouds[url].update({line:{
+                                                "description": "IP Address Used by Akamai",
+                                                "region": None,
+                                                "service": None,
+                                                "type": None}
+                                        })
+
 def lookup_ip(ip):
     for cloud in clouds.keys():
         for subnet in clouds[cloud].keys():
@@ -335,6 +396,20 @@ if __name__ == "__main__":
         if "github" in clouds.keys():
             with open(os.path.join(CWD,"Clouds","github.json"), "w") as file:
                 json.dump(clouds["github"], file)
+
+    if args.update == "all" or args.update == "digital_ocean":
+        get_digital_ocean()
+
+        if "digital_ocean" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","digital_ocean.json"), "w") as file:
+                json.dump(clouds["digital_ocean"], file)
+
+    if args.update == "all" or args.update == "akamai":
+        get_akamai()
+
+        if "akamai" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","akamai.json"), "w") as file:
+                json.dump(clouds["akamai"], file)
 
     print(args.ip)
     lookup_ip(args.ip)
