@@ -296,12 +296,9 @@ def get_akamai():
                     headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0"}
                 )
 
-                print(z.status_code)
-
                 if 200 >= z.status_code < 300:
                     clouds.update({url:defaultdict()})
                     with ZipFile(BytesIO(z.content)) as zipfile:
-                        print(zipfile.namelist())
                         for file in zipfile.namelist():
                             if file == "akamai_ipv4_CIDRs.txt" or file == "akamai_ipv6_CIDRs.txt":
                                 for line in zipfile.open(file).readlines():
