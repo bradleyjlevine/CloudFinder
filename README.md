@@ -7,3 +7,5 @@ Services so far:
 * GCP
 * Cloudflare
 * Fastly
+* OCI
+* Linode
