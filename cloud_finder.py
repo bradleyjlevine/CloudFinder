@@ -5,10 +5,11 @@ import os
 from io import BytesIO
 from collections import defaultdict
 from zipfile import ZipFile
+from bs4 import BeautifulSoup
 import ipaddress
 import sys
 
-sys.tracebacklimit=1
+sys.tracebacklimit=0
 
 # Get command-line options
 parser=argparse.ArgumentParser(description="CloudFinder, for finding IPs in the Clouds.  CloudFinder 2023.")
@@ -311,6 +312,56 @@ def get_akamai():
                                                 "type": None}
                                         })
 
+def get_azure():
+    url0 = "https://azservicetags.azurewebsites.net/"
+
+    with requests.Session() as session:
+        r = session.get(
+            url=url0,
+            timeout=60,
+            headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0"}
+        )
+
+        if 200 >= r.status_code < 300:
+            soup = BeautifulSoup(r.content, features="html.parser").body.table.tbody
+
+            urls_pre = [tr.find_all("td")[2].a["href"] for tr in soup.find_all("tr")]
+            
+            urls = list()
+
+            for url in urls_pre:
+                if "Public" in url:
+                    urls.append({"name": "azure-public", "url": url, "dname": "Public"})
+                elif "China" in url:
+                    urls.append({"name": "azure-china", "url" : url, "dname": "China" })
+                elif "Government" in url:
+                    urls.append({"name": "azure-gov", "url" : url, "dname": "Goverment"})
+                elif "Germany" in url:
+                    urls.append({"name": "azure-germany", "url": url, "dname": "Germany"})
+
+            for url in urls:
+                j = session.get(
+                    url=url["url"],
+                    timeout=60,
+                    allow_redirects=True
+                )
+
+                if 200 >= j.status_code < 300:
+                    clouds.update({url["name"]:defaultdict()})
+
+                    j = json.loads(j.text)
+
+                    if "cloud" in j.keys() and "values" in j.keys():
+                        for m in range(len(j["values"])):
+                            if "properties" in j["values"][m].keys():
+                                for n in range(len(j["values"][m]["properties"]["addressPrefixes"])):
+                                        clouds[url["name"]].update({j["values"][m]["properties"]["addressPrefixes"][n]:{
+                                                "description": "IP Address Used by Azure " + url["dname"],
+                                                "region": j["values"][m]["properties"]["region"],
+                                                "service": j["values"][m]["properties"]["systemService"],
+                                                "type": None}
+                                        })
+
 def lookup_ip(ip):
     for cloud in clouds.keys():
         for subnet in clouds[cloud].keys():
@@ -408,6 +459,25 @@ if __name__ == "__main__":
             with open(os.path.join(CWD,"Clouds","akamai.json"), "w") as file:
                 json.dump(clouds["akamai"], file)
 
-    print(args.ip)
+    if args.update == "all" or args.update == "azure":
+        get_azure()
+
+        if "azure-public" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","azure-public.json"), "w") as file:
+                json.dump(clouds["azure-public"], file)
+
+        if "azure-china" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","azure-china.json"), "w") as file:
+                json.dump(clouds["azure-china"], file)
+
+        if "azure-gov" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","azure-gov.json"), "w") as file:
+                json.dump(clouds["azure-gov"], file)
+
+        if "azure-germany" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","azure-germany.json"), "w") as file:
+                json.dump(clouds["azure-germany"], file)
+
+    print("="*10 + "/" + args.ip + "\\" + "="*10)
     lookup_ip(args.ip)
     

@@ -12,3 +12,4 @@ Services so far:
 * GitHub
 * DigitalOcean
 * Akamai
+* Microsoft Azure
