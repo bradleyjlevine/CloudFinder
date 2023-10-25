@@ -22,7 +22,7 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--pull",
-    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai","ibm"],
+    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai","ibm","o365"],
     dest = "update",
     action= "store",
     default = "all",
@@ -393,6 +393,33 @@ def get_ibm():
                                                     "type": None}
                                                 })
 
+def get_o365():
+    urls = {"o365": "https://endpoints.office.com/endpoints/worldwide?clientrequestid=b10c5ed1-bad1-445f-b386-b919946339a7"}
+
+    for url in urls.keys():
+        with requests.Session() as session:
+            j = session.get(
+                url=urls[url],
+                timeout=60
+            )
+
+            if 200 >= j.status_code < 300:
+                j = json.loads(j.text)
+
+                clouds.update({url:defaultdict()})
+
+                for m in range(len(j)):
+                    if "ips" in j[m].keys():
+                        for n in range(len(j[m]["ips"])):
+                            clouds[url].update({j[m]["ips"][n]:{
+                                "description": "IP Address Used by Microsoft O365",
+                                "region": None,
+                                "service": ",".join([j[m]["serviceArea"], j[m]["serviceAreaDisplayName"]]),
+                                "type": None}
+                            })            
+
+
+
 def lookup_ip(ip):
     for cloud in clouds.keys():
         for subnet in clouds[cloud].keys():
@@ -515,6 +542,13 @@ if __name__ == "__main__":
         if "ibm" in clouds.keys():
             with open(os.path.join(CWD,"Clouds","ibm.json"), "w") as file:
                 json.dump(clouds["ibm"], file)
+
+    if args.update == "all" or args.update == "o365":
+        get_o365()
+
+        if "o365" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","o365.json"), "w") as file:
+                json.dump(clouds["o365"], file)
 
     print("="*10 + "/" + args.ip + "\\" + "="*10)
     lookup_ip(args.ip)

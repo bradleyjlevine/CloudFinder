@@ -13,4 +13,5 @@ Services so far:
 * DigitalOcean
 * Akamai
 * Microsoft Azure
+* Microsoft O365
 * IBM Cloud
