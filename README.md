@@ -15,3 +15,4 @@ Services so far:
 * Microsoft Azure
 * Microsoft O365
 * IBM Cloud
+* Zscaler

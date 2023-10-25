@@ -22,7 +22,7 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--pull",
-    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai","ibm","o365"],
+    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai","ibm","o365","zscaler"],
     dest = "update",
     action= "store",
     default = "all",
@@ -418,7 +418,52 @@ def get_o365():
                                 "type": None}
                             })            
 
+def get_zscaler():
+    urls = {"zscaler": "https://config.zscaler.com/api/zscaler.net/cenr/json",
+            "zscaler-hubs": "https://config.zscaler.com/api/zscaler.net/hubs/cidr/json/required"}
 
+    for url in urls.keys():
+        with requests.Session() as session:
+            j = session.get(
+                url=urls[url],
+                timeout=60
+            )
+
+            if 200 >= j.status_code < 300:
+                j = json.loads(j.text)
+
+                clouds.update({url:defaultdict()})
+
+                if "zscaler" in url and "zscaler.net" in j.keys():
+                    for contient in j["zscaler.net"].keys():
+                        for city in j["zscaler.net"][contient]:
+                            for m in range(len(j["zscaler.net"][contient][city])):
+                                if "range" in j["zscaler.net"][contient][city][m].keys():
+                                    services = ""
+
+                                    if len(j["zscaler.net"][contient][city][m]["vpn"]):
+                                        services += "vpn"
+                                    
+                                    if len(j["zscaler.net"][contient][city][m]["gre"]):
+                                        if len(services):
+                                            services += ",gre"
+                                        else:
+                                            services += "gre"
+
+                                    clouds[url].update({j["zscaler.net"][contient][city][m]["range"]:{
+                                        "description": "IP Address Used by Zscaler",
+                                        "region": ",".join([contient,city]),
+                                        "service": services,
+                                        "type": None}
+                                    })
+                if "zscaler-hubs" in url and "cloudName" in j.keys() and "hubPrefixes" in j.keys():
+                    for ip in j["hubPrefixes"]:
+                        clouds[url].update({ip:{
+                            "description": "IP Address Used by Zscaler",
+                            "region": None,
+                            "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+                            "type": None}
+                            })
 
 def lookup_ip(ip):
     for cloud in clouds.keys():
@@ -429,7 +474,6 @@ def lookup_ip(ip):
             if ip_addr in subnet_addr:
                 print(json.dumps(clouds[cloud][subnet],
                                  indent = 4))
-
 
 if __name__ == "__main__":
     CWD = os.getcwd()
@@ -549,6 +593,17 @@ if __name__ == "__main__":
         if "o365" in clouds.keys():
             with open(os.path.join(CWD,"Clouds","o365.json"), "w") as file:
                 json.dump(clouds["o365"], file)
+
+    if args.update == "all" or args.update == "zscaler":
+        get_zscaler()
+
+        if "zscaler" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","zscaler.json"), "w") as file:
+                json.dump(clouds["zscaler"], file)
+        
+        if "zscaler-hubs" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","zscaler-hubs.json"), "w") as file:
+                json.dump(clouds["zscaler-hubs"], file)
 
     print("="*10 + "/" + args.ip + "\\" + "="*10)
     lookup_ip(args.ip)

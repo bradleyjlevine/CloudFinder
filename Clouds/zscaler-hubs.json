@@ -1,0 +1,494 @@
+{
+    "8.25.203.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "64.74.126.64/26": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "70.39.159.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "72.52.96.0/26": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "89.167.131.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "104.129.192.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "104.129.194.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "104.129.196.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "104.129.202.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "112.196.99.180/32": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.94.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.118.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.120.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.142.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.144.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.146.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.148.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.150.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.152.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.156.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.158.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.160.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.174.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.176.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.178.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.180.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.182.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.184.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.194.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "136.226.196.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "147.161.200.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "147.161.204.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "147.161.208.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "147.161.238.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "147.161.252.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.0.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.4.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.6.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.18.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.44.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.48.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.72.0/22": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.118.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.240.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.242.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.244.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "165.225.246.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "167.103.30.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "167.103.32.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "167.103.34.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "170.85.32.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "170.85.34.0/23": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "185.46.212.0/22": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "199.168.148.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "213.152.228.0/24": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "216.52.207.64/26": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "216.218.133.192/26": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2400:7aa0:1b11::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2400:7aa0:1c11::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2400:7aa0:1c12::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2400:7aa0:1e11::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1211::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1212::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1214::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1216::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1311::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1312::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1315::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1411::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1412::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1413::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1414::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2605:4300:1418::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1211::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1212::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1216::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1311::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1312::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1317::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1411::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1414::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    },
+    "2a03:eec0:1415::/48": {
+        "description": "IP Address Used by Zscaler",
+        "region": null,
+        "service": "Used by various Zscaler services (i.e. ZIA Virtual Service Edge, ZIA Private Service Edge, Zscaler Client Connector, DLP)",
+        "type": null
+    }
+}
