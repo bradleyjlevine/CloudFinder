@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import ipaddress
 import sys
 
-sys.tracebacklimit=0
+sys.tracebacklimit=1
 
 # Get command-line options
 parser=argparse.ArgumentParser(description="CloudFinder, for finding IPs in the Clouds.  CloudFinder 2023.")
@@ -22,7 +22,7 @@ parser.add_argument(
 parser.add_argument(
     "-p",
     "--pull",
-    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai"],
+    choices = ["all","none","gcp","aws","azure","oci","linode","digital_ocean","cloudflare","flastly","github","akamai","ibm"],
     dest = "update",
     action= "store",
     default = "all",
@@ -362,6 +362,37 @@ def get_azure():
                                                 "type": None}
                                         })
 
+def get_ibm():
+    urls = {"ibm": "https://raw.githubusercontent.com/dprosper/cidr-calculator/main/data/datacenters.json"}
+
+    for url in urls.keys():
+        with requests.Session() as session:
+            j = session.get(
+                url=urls[url],
+                timeout=60,
+            )
+
+            if 200 >= j.status_code < 300:
+                clouds.update({url:defaultdict()})
+
+                j = json.loads(j.text)
+
+                if "data_centers" in j.keys():
+                    for n in range(len(j["data_centers"])):
+                        for service in j["data_centers"][n].keys():
+                            if "key" not in service and "name" not in service and "city" not in service and "state" not in service and "country" not in service and "geo_region" not in service:
+                                if isinstance(j["data_centers"][n][service], list):
+                                    for o in range(len(j["data_centers"][n][service])):
+                                        if isinstance(j["data_centers"][n][service][o], dict) and "cidr_blocks" in j["data_centers"][n][service][o].keys():
+                                            for ip in range(len(j["data_centers"][n][service][o]["cidr_blocks"])):
+                                                if ipaddress.ip_interface(j["data_centers"][n][service][o]["cidr_blocks"][ip]).is_global:
+                                                    clouds[url].update({j["data_centers"][n][service][o]["cidr_blocks"][ip]:{
+                                                    "description": "IP Address Used by IBM Cloud",
+                                                    "region": j["data_centers"][n]["name"],
+                                                    "service": service,
+                                                    "type": None}
+                                                })
+
 def lookup_ip(ip):
     for cloud in clouds.keys():
         for subnet in clouds[cloud].keys():
@@ -477,6 +508,13 @@ if __name__ == "__main__":
         if "azure-germany" in clouds.keys():
             with open(os.path.join(CWD,"Clouds","azure-germany.json"), "w") as file:
                 json.dump(clouds["azure-germany"], file)
+
+    if args.update == "all" or args.update == "ibm":
+        get_ibm()
+
+        if "ibm" in clouds.keys():
+            with open(os.path.join(CWD,"Clouds","ibm.json"), "w") as file:
+                json.dump(clouds["ibm"], file)
 
     print("="*10 + "/" + args.ip + "\\" + "="*10)
     lookup_ip(args.ip)
